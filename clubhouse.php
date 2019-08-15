@@ -255,8 +255,8 @@ function clubhouse_civicrm_validateForm($formName, &$fields, &$files, &$form, &$
     return;
   }
 
-  // $keyfob_field_id = _get_keyfob_field_id();
-  // $recorded_keyfob_code = _get_keyfob_value($fields['cid']);
+  $keyfob_field_id = _get_keyfob_field_id();
+  $recorded_keyfob_code = _get_keyfob_value($fields['cid']);
   //
   // $new_keyfob_code = $fields["custom_{$keyfob_field_id}_{$fields['customRecId']}"]
   //
