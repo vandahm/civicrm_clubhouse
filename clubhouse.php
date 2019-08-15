@@ -171,13 +171,13 @@ function clubhouse_civicrm_navigationMenu(&$menu) {
 
 
 function clubhouse_civicrm_alterCalculatedMembershipStatus(&$membershipStatus, $arguments, $membership) {
-    echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
-    echo "<h1>Membership Status</h1>";
-    var_dump($membershipStatus);
-    echo "<h1>Arguments</h1>";
-    var_dump($arguments);
-    echo "<h1>Membership</h1>";
-    var_dump($membership);
+    // echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
+    // echo "<h1>Membership Status</h1>";
+    // var_dump($membershipStatus);
+    // echo "<h1>Arguments</h1>";
+    // var_dump($arguments);
+    // echo "<h1>Membership</h1>";
+    // var_dump($membership);
 
     $result = civicrm_api3('Membership', 'get', [
       'sequential' => 1,
@@ -191,8 +191,41 @@ function clubhouse_civicrm_alterCalculatedMembershipStatus(&$membershipStatus, $
 
     $membership = reset($result['values']);
 
-    echo "<h1>Retrieved Membership</h1>";
-    var_dump($membership);
+    // echo "<h1>Retrieved Membership</h1>";
+    // var_dump($membership);
+
+    // If the calculated status matches the recorded status, we have nothing to report.
+    // if ($membership['status_id'] == $membershipStatus['id']) {
+    //   return;
+    // }
+
+    // We need to send the new status to Clubhouse so it can process it.
+    $payload = array(
+      'contact_id' => $membership['contact_id'],
+      'membership_status' => $membershipStatus['name']
+    );
+
+    // We also need the keyfob code. Getting this is a huge pain in the ass.
+    $result = civicrm_api3('CustomField', 'get', [
+      'sequential' => 1,
+      'custom_group_id' => "Member_Details",
+      'name' => "Keyfob",
+    ]);
+    $result = reset($result['values']);
+    $field_id = $result['id'];
+
+    $result = civicrm_api3('CustomValue', 'get', [
+      'sequential' => 1,
+      'entity_id' => $membership['contact_id'],
+      "return.custom_{$field_id}" => 1
+    ]);
+
+    $payload['keyfob_code'] = reset($result['values'])['latest'];
+
+    echo '<h1>JSON PAYLOAD</h1>';
+    var_dump($payload);
+
+
 
 
 
