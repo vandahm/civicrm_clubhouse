@@ -231,6 +231,6 @@ function clubhouse_civicrm_alterCalculatedMembershipStatus(&$membershipStatus, $
     var_dump($payload);
 }
 
-clubhouse_civicrm_postProcess($formName, &$form) {
+function clubhouse_civicrm_postProcess($formName, &$form) {
   echo $formName; die;
 }
