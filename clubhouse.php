@@ -205,7 +205,7 @@ function clubhouse_civicrm_alterCalculatedMembershipStatus(&$membershipStatus, $
       'membership_status' => $membershipStatus['name']
     );
 
-    // We also need the keyfob code. Getting this is a huge pain in the ass.
+    // We also need the keyfob code. Getting this is a pain.
     $result = civicrm_api3('CustomField', 'get', [
       'sequential' => 1,
       'custom_group_id' => "Member_Details",
@@ -222,11 +222,11 @@ function clubhouse_civicrm_alterCalculatedMembershipStatus(&$membershipStatus, $
 
     $payload['keyfob_code'] = reset($result['values'])['latest'];
 
+    // If the keyfob code hasn't been set yet, we have nothing to report.
+    if (! $payload['keyfob_code']) {
+      return;
+    }
+
     echo '<h1>JSON PAYLOAD</h1>';
     var_dump($payload);
-
-
-
-
-
 }
