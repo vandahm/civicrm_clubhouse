@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<extension key="org.tcmaker.clubhouse" type="module">
+  <file>clubhouse</file>
+  <name>TC Maker Clubhouse Integration</name>
+  <description>Adds necessary hooks to integrate with the Clubhouse dashboard app.</description>
+  <license>ISC</license>
+  <maintainer>
+    <author>Stephen Van Dahm</author>
+    <email>code@vandahm.com</email>
+  </maintainer>
+  <urls>
+    <url desc="Main Extension Page">http://github.com/tcmaker/</url>
+    <url desc="Documentation">http://github.com/tcmaker/</url>
+    <url desc="Support">http://github.com/tcmaker/</url>
+    <url desc="Licensing">https://opensource.org/licenses/ISC</url>
+  </urls>
+  <releaseDate>2019-08-15</releaseDate>
+  <version>0.0.1</version>
+  <develStage>alpha</develStage>
+  <compatibility>
+    <ver>5.0</ver>
+  </compatibility>
+  <comments>This is a new, undeveloped module</comments>
+  <civix>
+    <namespace>CRM/Clubhouse</namespace>
+  </civix>
+</extension>
