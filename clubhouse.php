@@ -6,7 +6,7 @@ use CRM_Clubhouse_ExtensionUtil as E;
 /**
  * Implements hook_civicrm_config().
  *
- * @link https://docs.civicrm.org/dev/en/latest/hooks/hook_civicrm_config/ 
+ * @link https://docs.civicrm.org/dev/en/latest/hooks/hook_civicrm_config/
  */
 function clubhouse_civicrm_config(&$config) {
   _clubhouse_civix_civicrm_config($config);
@@ -178,4 +178,14 @@ function clubhouse_civicrm_alterCalculatedMembershipStatus(&$membershipStatus, $
     var_dump($arguments);
     echo "<h1>Membership</h1>";
     var_dump($membership);
+
+    $membership = civicrm_api3('Membership', 'get', [
+      'sequential' => 1,
+      'id' => $membership['membership_id']
+    ]);
+
+    echo "<h1>Retrieved Membership";
+    var_dump($membership);
+
+
 }
