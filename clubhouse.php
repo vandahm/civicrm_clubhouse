@@ -231,7 +231,7 @@ function clubhouse_civicrm_alterCalculatedMembershipStatus(&$membershipStatus, $
     var_dump($payload);
 }
 
-function clubhouse_civicrm_postProcess($formName, &$form) {
+function clubhouse_civicrm_preProcess($formName, &$form) {
   if ($formName != 'CRM_Contact_Form_Inline_CustomData') {
     return;
   }
