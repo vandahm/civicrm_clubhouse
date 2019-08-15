@@ -251,19 +251,19 @@ function clubhouse_civicrm_alterCalculatedMembershipStatus(&$membershipStatus, $
     var_dump($payload);
 }
 
-function clubhouse_civicrm_validateForm($formName, &$fields, &$files, &$form, &$errors) {
-  if ($formName != 'CRM_Contact_Form_Inline_CustomData') {
-    return;
-  }
-
-  $keyfob_field_id = _get_keyfob_field_id();
-  $recorded_keyfob_code = _get_keyfob_value($fields['cid']);
-
-  $new_keyfob_code = $fields["custom_{$keyfob_field_id}_{$fields['customRecId']}"]
-
-  if ($recorded_keyfob_code == $new_keyfob_code) {
-    return;
-  }
-
-  echo $new_keyfob_code; die;
-}
+// function clubhouse_civicrm_validateForm($formName, &$fields, &$files, &$form, &$errors) {
+//   if ($formName != 'CRM_Contact_Form_Inline_CustomData') {
+//     return;
+//   }
+//
+//   $keyfob_field_id = _get_keyfob_field_id();
+//   $recorded_keyfob_code = _get_keyfob_value($fields['cid']);
+//
+//   $new_keyfob_code = $fields["custom_{$keyfob_field_id}_{$fields['customRecId']}"]
+//
+//   if ($recorded_keyfob_code == $new_keyfob_code) {
+//     return;
+//   }
+//
+//   echo $new_keyfob_code; die;
+// }
