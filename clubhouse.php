@@ -230,3 +230,7 @@ function clubhouse_civicrm_alterCalculatedMembershipStatus(&$membershipStatus, $
     echo '<h1>JSON PAYLOAD</h1>';
     var_dump($payload);
 }
+
+clubhouse_civicrm_postProcess($formName, &$form) {
+  echo $formName; die;
+}
