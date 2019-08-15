@@ -176,19 +176,18 @@ function _get_keyfob_field_id() {
     'custom_group_id' => "Member_Details",
     'name' => "Keyfob",
   ]);
-  $result = reset($result['values']);
-  return $result['id'];
+  return reset($result['values'])['id'];
 }
 
-function _get_keyfob_value($contact_id) {
-  $field_id = _get_keyfob_field_id();
-  $result = civicrm_api3('CustomValue', 'get', [
-    'sequential' => 1,
-    'entity_id' => $contact_id,
-    "return.custom_{$field_id}" => 1
-  ]);
-  return reset($result['values'])['latest']
-}
+// function _get_keyfob_value($contact_id) {
+//   $field_id = _get_keyfob_field_id();
+//   $result = civicrm_api3('CustomValue', 'get', [
+//     'sequential' => 1,
+//     'entity_id' => $contact_id,
+//     "return.custom_{$field_id}" => 1
+//   ]);
+//   return reset($result['values'])['latest']
+// }
 
 function clubhouse_civicrm_alterCalculatedMembershipStatus(&$membershipStatus, $arguments, $membership) {
     // echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
