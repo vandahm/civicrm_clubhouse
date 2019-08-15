@@ -179,13 +179,21 @@ function clubhouse_civicrm_alterCalculatedMembershipStatus(&$membershipStatus, $
     echo "<h1>Membership</h1>";
     var_dump($membership);
 
-    $membership = civicrm_api3('Membership', 'get', [
+    $result = civicrm_api3('Membership', 'get', [
       'sequential' => 1,
       'id' => $membership['membership_id']
     ]);
 
-    echo "<h1>Retrieved Membership";
+    // We can't do anything if the API call doesn't work.
+    if ($result['is_error'] != 0) {
+      return;
+    }
+
+    $membership = reset($result['values']);
+
+    echo "<h1>Retrieved Membership</h1>";
     var_dump($membership);
+
 
 
 }
